@@ -1,0 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_constructor.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oouklich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/14 20:52:56 by oouklich          #+#    #+#             */
+/*   Updated: 2019/07/14 20:54:28 by oouklich         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../headers/rtv1.h"
+
+t_point		ft_point(int a, int b)
+{
+	t_point		p;
+
+	p.x = a;
+	p.y = b;
+	return (p);
+}
+
+t_sphere	ft_sphere(t_vector c, double r, t_vector v)
+{
+	t_sphere	s;
+
+	s.center = c;
+	s.ray = r;
+	s.lamb = v;
+	s.ref_idx = DEFAULT;
+	return (s);
+}
+
+t_sphere    ft_sphere_dielec(t_vector c, double r, double ri)
+{
+    t_sphere	s;
+
+    s.center = c;
+    s.ray = r;
+    s.lamb = ft_vector(0,0,0);
+    s.ref_idx = ri;
+    return (s);
+}
+
+t_interval	ft_interval(double a, double b)
+{
+	t_interval t;
+
+	t.t_min = a;
+	t.t_max = b;
+	return (t);
+}
+
+t_xyrect    ft_xyrect(t_interval x, t_interval y, double k, t_vector mat)
+{
+    t_xyrect    ret;
+
+    ret.x0 = x.t_min;
+    ret.x1 = x.t_max;
+    ret.y0 = y.t_min;
+    ret.y1 = y.t_max;
+    ret.k = k;
+    ret.mp = mat;
+    return (ret);
+}
+
+t_hit       ft_rec(t_vector n, t_vector p, double t)
+{
+    t_hit   ret;
+
+    ret.normal = n;
+    ret.p = p;
+    ret.t = t;
+    return (ret);
+}
+
+t_camera	ft_camera(t_vector a, t_vector b, t_vector c, t_vector d)
+{
+	t_camera    cam;
+
+	cam.origin = a;
+	cam.lower_left_corner = b;
+	cam.horizontal = c;
+	cam.vertical = d;
+	return (cam);
+}
+
+t_texture   ft_texture(t_vector a, t_vector b)
+{
+    t_texture   t;
+
+    t.one = a;
+    t.two = b;
+    return (t);
+}
