@@ -1,0 +1,17 @@
+[
+	"Camera":
+	{
+		"lookfrom": "321 54 87"
+		"lookat": "87 54 54"
+		"fov": "45"
+	}
+	"Object": "Sphere"
+	{
+		"position": "645 654 54"
+		"rotation": "54 54 54"
+		"translation": "545v4  4 4"
+		"color": "0 0 0"
+		"size": "5"
+	}
+	"Light":                    {}
+]

@@ -1,0 +1,24 @@
+[
+	"Camera":
+	{
+		"lookfrom": "123.45 98.89 55.24"
+		"lookat": "0.0 0.0 0.0"
+		"fov": "60.0"
+	}
+	"Object": "Cylinder"
+	{
+		"position": "3.1 0.55 -5.9"
+		"rotation": "0.0 1.0 0.0"
+		"translation": "0.0 0.0 0.0"
+		"color": "1.0 1.0 0.3"
+		"size": "1.0"
+	}
+	"Object": "Cylinder"
+	{
+		"position": "3.1 0.55 -5.9"
+		"rotation": "0.0 1.0 0.0"
+		"translation": "0.0 0.0 0.0"
+		"color": "1.0 1.0 0.3"
+		"size": "0.1"
+	}
+]
