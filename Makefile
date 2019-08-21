@@ -24,12 +24,18 @@ NO_COLOR=\x1b[0m
 BUILD_PRINT = $(OK_COLOR)rtv1 successfully compiles$(NO_COLOR)
 OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
 
-INCLUDES = ./minilibx_macos
+ifeq ($(shell uname), Darwin)
+$(info MacOs detected)
+MLX = -lmlx -framework OpenGL -framework AppKit
+else
+$(info $(shell uname) detected)
+MLX = -lm -lmlx -lXext -lX11
+endif
+
 CFLAGS = -Wall -Wextra -Werror
-MLX = ./minilibx -lmlx -framework OpenGL -framework AppKit
 LIBFT = ./libft/ -lft
-THREAD = . -lpthread
-MYFLAG =  -I $(INCLUDES) -L $(MLX) -L $(LIBFT) -L $(THREAD)
+THREAD = -lpthread
+MYFLAG =  $(MLX) -L $(LIBFT) $(THREAD)
 
 all: $(NAME)
 
