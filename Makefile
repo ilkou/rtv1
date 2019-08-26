@@ -15,8 +15,10 @@ NAME = rtv1
 SRCS = main.c ft_draw.c ft_events_1.c ft_events_2.c ft_get_data.c ft_hit.c
 SRCS += ft_init.c ft_lighting.c ft_parser.c ft_process.c ft_ray.c ft_rotate.c
 SRCS += ft_ui_1.c ft_ui_2.c ft_vector1.c ft_vector2.c ft_vector3.c ft_color.c
-
 SRC = $(SRCS:%=./srcs/%)
+
+HEADER = headers
+
 OBJ = $(SRCS:.c=.o)
 
 OK_COLOR=\x1b[32;01m
@@ -44,10 +46,8 @@ $(NAME): $(OBJ)
 	@gcc $(CFLAGS) -o $(NAME) $^ $(MYFLAG)
 	@echo "$(BUILD_PRINT)"
 
-%.o: ./headers/%.h
-
-%.o: ./srcs/%.c
-	@echo "`gcc $(CFLAGS) -o $@ -c $<`$< => $@ $(OK_STRING)"
+%.o: ./srcs/%.c $(HEADER)
+	@echo "`gcc -I $(filter-out $<, $+) $(CFLAGS) -o $@ -c $<`$< => $@ $(OK_STRING)"
 
 clean:
 	@rm -rf $(OBJ)
