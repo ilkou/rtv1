@@ -28,7 +28,7 @@ OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
 
 ifeq ($(shell uname), Darwin)
 $(info MacOs detected)
-MLX = -lmlx -framework OpenGL -framework AppKit
+MLX = -I ./minilibx_macos -L ./minilibx_macos -lmlx -framework OpenGL -framework AppKit
 else
 $(info $(shell uname) detected)
 MLX = -lm -lmlx -lXext -lX11
@@ -47,7 +47,7 @@ $(NAME): $(OBJ)
 	@echo "$(BUILD_PRINT)"
 
 %.o: ./srcs/%.c $(HEADER)
-	@echo "`gcc -I $(filter-out $<, $+) $(CFLAGS) -o $@ -c $<`$< => $@ $(OK_STRING)"
+	@echo "`gcc -I ./minilibx_macos -I $(filter-out $<, $+) $(CFLAGS) -o $@ -c $<`$< => $@ $(OK_STRING)"
 
 clean:
 	@rm -rf $(OBJ)
