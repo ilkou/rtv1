@@ -43,9 +43,13 @@ void	ft_parser(t_ptr *p, char *chemin)
 	int		fd;
 	int		check;
 	char	*scene;
-
+	
+	fd = open(chemin, O_RDONLY, !O_DIRECTORY);
+	
 	if ((fd = open(chemin, O_RDONLY)) == -1)
 		ft_free_exit(ft_strjoin(chemin, " : No such file\n"), 1, &p);
+	if (open(chemin, O_DIRECTORY) != -1)
+		ft_free_exit(ft_strjoin(chemin, " : must be a file\n"), 1, &p);
 	scene = get_full_text(fd);
 	close(fd);
 	check = ft_check_brackets(scene);

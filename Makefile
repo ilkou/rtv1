@@ -50,10 +50,12 @@ $(NAME): $(OBJ)
 	@echo "`gcc -I ./minilibx_macos -I $(filter-out $<, $+) $(CFLAGS) -o $@ -c $<`$< => $@ $(OK_STRING)"
 
 clean:
+	@echo "$(OK_COLOR)Deleting objects...$(NO_COLOR)"
 	@rm -rf $(OBJ)
 	@make clean -C libft
 
 fclean: clean
+	@echo "$(OK_COLOR)Deleting rtv1...$(NO_COLOR)"
 	@make fclean -C libft
 	@rm -f $(NAME)
 
